@@ -64,6 +64,7 @@ plugins:
   - serverless-domain-manager
   - serverless-plugin-optimize
   - serverless-pseudo-parameters
+  - serverless-plugin-warmup
 
 custom:
   # Enable warmup on all functions (only for production and staging)
