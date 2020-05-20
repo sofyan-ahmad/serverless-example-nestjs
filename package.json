@@ -8,6 +8,7 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "offline": "sls offline",
     "serve": "nodemon",
     "serve:dev": "nest start --watch",
     "serve:debug": "nest start --debug --watch",
