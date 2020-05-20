@@ -1,0 +1,53 @@
+org: yourorg
+app: techtalk
+service: serverless-nestjs
+
+custom:
+  stages:
+    dev:
+      domain: 'hello.yourdomain.com'
+      certificate: 'yourdomain.com'
+    prod:
+      domain: 'hello.yourdomain.com'
+      certificate: 'yourdomain.com'
+
+  customDomain:
+    domainName: ${self:custom.stages.${self:provider.stage}.domain}
+    stage: ${self:provider.stage}
+    certificateName: ${self:custom.stages.${self:provider.stage}.certificate}
+    createRoute53Record: true
+    endpointType: 'regional'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: 'ap-southeast-1'
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+  - serverless-domain-manager
+  - serverless-plugin-optimize
+  - serverless-pseudo-parameters
+
+package:
+  exclude:
+    - .git/**
+    - src/**
+    - test/**
+    - e2e/**
+    - nodemon.json
+    - README.md
+
+functions:
+  index:
+    handler: dist/index.handler
+    events:
+      - http:
+          cors: true
+          path: '/'
+          method: any
+      - http:
+          cors: true
+          path: '{proxy+}'
+          method: any

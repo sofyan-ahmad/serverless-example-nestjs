@@ -1,0 +1,81 @@
+{
+  "name": "serverless-example-nestjs",
+  "version": "0.0.0",
+  "description": "description",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "serve": "nodemon",
+    "serve:dev": "nest start --watch",
+    "serve:debug": "nest start --debug --watch",
+    "serve:prod": "node dist/main",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "domain:dev": "sls create_domain --stage dev --env development",
+    "domain:prod": "sls create_domain --stage prod --env production"
+  },
+  "dependencies": {
+    "@nestjs/common": "^7.0.13",
+    "@nestjs/core": "^7.0.13",
+    "@nestjs/platform-express": "^7.0.13",
+    "aws-serverless-express": "^3.3.8",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.12.2",
+    "express": "^4.17.1",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^6.5.5"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^7.1.5",
+    "@nestjs/schematics": "^7.0.0",
+    "@nestjs/swagger": "^4.5.7",
+    "@nestjs/testing": "^7.0.13",
+    "@types/aws-lambda": "^8.10.51",
+    "@types/express": "^4.17.6",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.1",
+    "@types/supertest": "^2.0.9",
+    "@typescript-eslint/parser": "^2.34.0",
+    "eslint": "^7.0.0",
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "serverless-domain-manager": "^4.1.0",
+    "serverless-dotenv-plugin": "^2.4.2",
+    "serverless-offline": "^6.1.5",
+    "serverless-plugin-optimize": "^4.1.4-rc.1",
+    "serverless-pseudo-parameters": "^2.5.0",
+    "supertest": "^4.0.2",
+    "swagger-ui-express": "^4.1.4",
+    "ts-jest": "^26.0.0",
+    "ts-loader": "^7.0.4",
+    "ts-node": "^8.10.1",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.9.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}
